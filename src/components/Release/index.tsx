@@ -1,36 +1,57 @@
+import React from 'react';
 import {
-	Button,
 	Card,
 	CardActionArea,
 	CardActions,
 	CardContent,
 	CardMedia,
+	IconButton,
 	Theme,
 	Typography
 } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/styles';
-import React from 'react';
+import AlbumIcon from '@material-ui/icons/Album';
 import { useNavigate } from 'react-router-dom';
 import { Release as IRelease } from '../../types';
 
-const useStyles = makeStyles(({ spacing, palette }: Theme) =>
+const useStyles = makeStyles(({ spacing }: Theme) =>
 	createStyles({
 		root: {
-			maxWidth: 345
+			position: 'relative',
+			maxWidth: 345,
+			borderRadius: 10
 		},
 		media: {
-			paddingTop: '75%'
+			paddingTop: '90%',
+			margin: spacing(1.5, 1.5, 0),
+			borderRadius: 8
+		},
+		actions: {
+			position: 'absolute',
+			top: 0,
+			right: 0,
+			left: 0,
+			display: 'flex',
+			justifyContent: 'flex-end',
+			padding: spacing(2)
 		}
 	})
 );
 
-function Release({ id, cover_image, thumb, title, artists, type }: Props) {
+function Release({ id, cover_image, thumb, title, artists, type, uri }: Props) {
 
 	const c = useStyles();
 
 	let navigate = useNavigate();
 
 	const handleViewDetails = () => navigate(`/${type}/${id}`);
+
+	const handleRedirectToDiscogs = () => {
+		const win = window.open(uri, '_blank');
+		if (win != null) {
+			win.focus();
+		}
+	}
 
 	return (
 		<Card className={c.root}>
@@ -43,7 +64,7 @@ function Release({ id, cover_image, thumb, title, artists, type }: Props) {
 					/>
 				}
 				<CardContent>
-					<Typography gutterBottom variant='h5' component='h2'>
+					<Typography gutterBottom variant='h6' component='h2'>
 						{title}
 					</Typography>
 					{artists && artists[0] &&
@@ -53,14 +74,13 @@ function Release({ id, cover_image, thumb, title, artists, type }: Props) {
 					}
 				</CardContent>
 			</CardActionArea>
-			<CardActions>
-				<Button size='small' color='primary' onClick={handleViewDetails}>
-					Details
-				</Button>
-				<Button size='small' color='primary'>
-					View on Discogs
-				</Button>
-			</CardActions>
+			{uri &&
+				<CardActions className={c.actions}>
+					<IconButton aria-label='View on Discogs' color='secondary' onClick={handleRedirectToDiscogs}>
+						<AlbumIcon />
+					</IconButton>
+				</CardActions>
+			}
 		</Card>
 	);
 }

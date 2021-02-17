@@ -8,6 +8,7 @@ import Master from './pages/Master';
 import NotFound from './pages/NotFound';
 import Release from './pages/Release';
 import Wishlist from './pages/Wishlist';
+import Header from './components/Header';
 
 const useStyles = makeStyles(({ spacing, palette }: Theme) =>
 	createStyles({
@@ -51,6 +52,11 @@ function App() {
 					</Button>
 				</Toolbar>
 			</AppBar>
+
+			<Routes>
+				<Route path='/wishlist' element={<Header>Wishlist</Header>} />
+				<Route path='*' element={<Header />} />
+			</Routes>
 
 			<Box py={4}>
 				<Container maxWidth='lg' component='main'>
