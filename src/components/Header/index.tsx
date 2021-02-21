@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Theme, Typography, useTheme } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/styles';
+import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles(({ palette, typography }: Theme) =>
 	createStyles({
@@ -27,11 +28,19 @@ const Header = ({ children }: Props) => {
 	const c = useStyles();
 	const theme = useTheme();
 
+	const location = useLocation();
+	const [url, setUrl] = useState('https://picsum.photos/1920/220/?blur=7');
+
+	useEffect(() => {
+		const ver = new Date();
+		setUrl(`https://picsum.photos/1920/220/?blur=7&v=${ver.getTime()}`);
+	}, [location])
+
 	return (
 		<Box
 			component='section'
 			className={c.root}
-			style={{ 'background': `${theme.palette.grey[400]} center / cover no-repeat url('https://picsum.photos/1920/220/?blur=7')` }}
+			style={{ 'background': `${theme.palette.grey[400]} center / cover no-repeat url(${url})` }}
 		>
 			<Typography variant='h1' className={c.inner}>
 				<svg>

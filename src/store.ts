@@ -1,12 +1,18 @@
 import { Store as PSStore } from 'pullstate';
-import { Wishlist } from './types/response/wishlist';
+import { Collection, CollectionFolder, Wishlist } from './types';
 
 interface IStore {
 	wishlist: Wishlist[];
+	folders: CollectionFolder[];
+	activeFolder: number;
+	collection: Collection[];
 }
 
 const Store = new PSStore<IStore>({
-	wishlist: []
+	wishlist: [],
+	folders: [],
+	activeFolder: 0,
+	collection: []
 });
 
 export default Store;

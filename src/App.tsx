@@ -54,8 +54,8 @@ function App() {
 			</AppBar>
 
 			<Routes>
+				<Route path='/' element={<Header>Collection</Header>} />
 				<Route path='/wishlist' element={<Header>Wishlist</Header>} />
-				<Route path='*' element={<Header />} />
 			</Routes>
 
 			<Box py={4}>

@@ -1,8 +1,9 @@
+import { WishlistResponse } from '../types';
 import api from './api';
 
-const get = () => {
+const get = (page = 1, perPage = 50): Promise<WishlistResponse> => {
 	return api({
-		url:    `users/${process.env.REACT_APP_DISCOGS_USERNAME}/wants`,
+		url:    `users/${process.env.REACT_APP_DISCOGS_USERNAME}/wants?page=${page}&per_page=${perPage}`,
 		method: 'GET'
 	});
 }

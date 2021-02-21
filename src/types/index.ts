@@ -12,5 +12,6 @@ export * from "./response/searchRelease";
 export * from "./response/searchLabel";
 export * from "./response/pagination";
 export * from "./response/entityArtist";
+export * from "./response/collection";
 export * from "./response/wishlist";
 export * from "./response";

@@ -26,6 +26,9 @@ const useStyles = makeStyles(({ spacing }: Theme) =>
 			margin: spacing(1.5, 1.5, 0),
 			borderRadius: 8
 		},
+		content: {
+			paddingTop: spacing(1)
+		},
 		actions: {
 			position: 'absolute',
 			top: 0,
@@ -63,8 +66,8 @@ function Release({ id, cover_image, thumb, title, artists, type, uri }: Props) {
 						title={title}
 					/>
 				}
-				<CardContent>
-					<Typography gutterBottom variant='h6' component='h2'>
+				<CardContent className={c.content}>
+					<Typography variant='subtitle1' component='h2'>
 						{title}
 					</Typography>
 					{artists && artists[0] &&
