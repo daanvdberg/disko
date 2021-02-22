@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
 
 const baseFonts = [
 	'Montserrat',
@@ -18,9 +18,7 @@ const bodyFontFamily = baseFonts.join(',');
 baseFonts.unshift('Asap');
 const fontFamily = baseFonts.join(',');
 
-console.log();
-
-const theme = createMuiTheme({
+const theme = unstable_createMuiStrictModeTheme({
 	typography: {
 		fontFamily: bodyFontFamily,
 		h1: {
