@@ -10,14 +10,14 @@ const useStyles = makeStyles(({ palette, typography }: Theme) =>
 			justifyContent: 'center',
 			alignItems: 'center',
 			width: '100vw',
-			height: 220
+			height: 180
 		},
 		inner: {
 			color: palette.common.white,
 			fontWeight: typography.fontWeightBold,
 			'& svg': {
-				width: 320,
-				height: 100,
+				width: 280,
+				height: 80,
 			}
 		}
 	})
@@ -42,7 +42,7 @@ const Header = ({ children }: Props) => {
 			className={c.root}
 			style={{ 'background': `${theme.palette.grey[400]} center / cover no-repeat url(${url})` }}
 		>
-			<Typography variant='h1' className={c.inner}>
+			<Typography variant='h3' className={c.inner}>
 				<svg>
 					<defs>
 						<g id='text'>
